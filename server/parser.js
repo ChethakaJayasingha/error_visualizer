@@ -1,4 +1,4 @@
-const { TokenType } = require("./lexer");
+import { TokenType } from "./lexer.js";
 
 class ParseTreeNode {
   constructor(label, value = null) {
@@ -152,4 +152,4 @@ class Parser {
   }
 }
 
-module.exports = { Parser, ParseTreeNode };
+export { Parser, ParseTreeNode };

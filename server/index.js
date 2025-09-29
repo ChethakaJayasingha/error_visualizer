@@ -1,8 +1,8 @@
-const express = require("express");
-const cors = require("cors");
-const { Lexer } = require("./lexer");
-const { Parser } = require("./parser");
-const { SymbolTable } = require("./symbolTable");
+import express from "express";
+import cors from "cors";
+import { Lexer } from "./lexer.js";
+import { Parser } from "./parser.js";
+import { SymbolTable } from "./symbolTable.js";
 
 const app = express();
 const PORT = 3001;

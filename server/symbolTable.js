@@ -37,4 +37,4 @@ class SymbolTable {
   }
 }
 
-module.exports = { SymbolTable };
+export { SymbolTable };
