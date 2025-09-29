@@ -1,10 +1,11 @@
 {
   "name": "plcd",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "error visualizer",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node main.js",
+    "test": "node main.js"
   },
   "keywords": [],
   "author": "",
