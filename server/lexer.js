@@ -43,23 +43,21 @@ class Lexer {
         continue;
       }
 
-      // Check for digits
+  
       if (/[0-9]/.test(this.currentChar)) {
         const pos = this.position;
-        const value = this.currentChar;
-        this.advance();
+        const value = this.currentChar; 
+        this.advance(); 
         return new Token(TokenType.NUMBER, value, pos);
       }
 
-      // Check for letters
       if (/[a-zA-Z]/.test(this.currentChar)) {
         const pos = this.position;
-        const value = this.currentChar;
+        const value = this.currentChar; 
         this.advance();
         return new Token(TokenType.IDENTIFIER, value, pos);
       }
 
-      // Check for operators
       if (this.currentChar === "+") {
         const pos = this.position;
         this.advance();
@@ -86,7 +84,7 @@ class Lexer {
 
       // Invalid character
       throw new Error(
-        `Invalid character: ${this.currentChar} at position ${this.position}`
+        `Invalid character: '${this.currentChar}' at position ${this.position}`
       );
     }
 
@@ -105,6 +103,10 @@ class Lexer {
     tokens.push(token); // Add EOF token
     return tokens;
   }
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { Lexer, TokenType, Token };
 }
 
 export { Lexer, TokenType, Token };
