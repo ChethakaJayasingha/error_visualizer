@@ -37,9 +37,7 @@ npm install
 ```bash
 # In server directory
 cd server
-npm start
-# or for development with auto-restart
-npm run dev
+node index.js
 ```
 
 - Server will run on: http://localhost:3001
