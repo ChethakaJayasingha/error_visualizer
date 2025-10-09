@@ -3,7 +3,9 @@ const TokenType = {
   NUMBER: "NUMBER",
   IDENTIFIER: "IDENTIFIER",
   PLUS: "PLUS",
+  MINUS: "MINUS",
   MULTIPLY: "MULTIPLY",
+  DIVIDE: "DIVIDE",
   LPAREN: "LPAREN",
   RPAREN: "RPAREN",
   EOF: "EOF",
@@ -43,17 +45,16 @@ class Lexer {
         continue;
       }
 
-  
       if (/[0-9]/.test(this.currentChar)) {
         const pos = this.position;
-        const value = this.currentChar; 
-        this.advance(); 
+        const value = this.currentChar;
+        this.advance();
         return new Token(TokenType.NUMBER, value, pos);
       }
 
       if (/[a-zA-Z]/.test(this.currentChar)) {
         const pos = this.position;
-        const value = this.currentChar; 
+        const value = this.currentChar;
         this.advance();
         return new Token(TokenType.IDENTIFIER, value, pos);
       }
@@ -64,10 +65,22 @@ class Lexer {
         return new Token(TokenType.PLUS, "+", pos);
       }
 
+      if (this.currentChar === "-") {
+        const pos = this.position;
+        this.advance();
+        return new Token(TokenType.MINUS, "-", pos);
+      }
+
       if (this.currentChar === "*") {
         const pos = this.position;
         this.advance();
         return new Token(TokenType.MULTIPLY, "*", pos);
+      }
+
+      if (this.currentChar === "/") {
+        const pos = this.position;
+        this.advance();
+        return new Token(TokenType.DIVIDE, "/", pos);
       }
 
       if (this.currentChar === "(") {
@@ -105,7 +118,7 @@ class Lexer {
   }
 }
 
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   module.exports = { Lexer, TokenType, Token };
 }
 

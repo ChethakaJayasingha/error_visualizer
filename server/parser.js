@@ -59,6 +59,12 @@ class Parser {
       this.advance();
       node.addChild(this.parseT());
       node.addChild(this.parseEPrime());
+    } else if (this.currentToken.type === TokenType.MINUS) {
+      // NEW: Handle subtraction
+      node.addChild(new ParseTreeNode("MINUS", "-"));
+      this.advance();
+      node.addChild(this.parseT());
+      node.addChild(this.parseEPrime());
     } else {
       // Epsilon production
       node.addChild(new ParseTreeNode("ε"));
@@ -87,6 +93,12 @@ class Parser {
 
     if (this.currentToken.type === TokenType.MULTIPLY) {
       node.addChild(new ParseTreeNode("MULTIPLY", "*"));
+      this.advance();
+      node.addChild(this.parseF());
+      node.addChild(this.parseTPrime());
+    } else if (this.currentToken.type === TokenType.DIVIDE) {
+      // NEW: Handle division
+      node.addChild(new ParseTreeNode("DIVIDE", "/"));
       this.advance();
       node.addChild(this.parseF());
       node.addChild(this.parseTPrime());
