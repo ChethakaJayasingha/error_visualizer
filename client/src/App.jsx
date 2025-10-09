@@ -89,9 +89,17 @@ export default function ParserAnalyzerUI() {
           <h1 className="text-4xl font-bold text-gray-800 mb-2">
             Error Visualizer
           </h1>
-          <p className="text-gray-600 mb-6">
-            Grammar: E → TE' | E' → +TE'|ε | T → FT' | T' → *FT'|ε | F → (E)|id
-          </p>
+          <div className="mt-4 p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                    <h4 className="font-semibold text-indigo-900 mb-2 text-sm">Grammar Productions Use:</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs font-mono text-indigo-800">
+                      <div>E → TE'</div>
+                      <div>E' → +TE' | ε</div>
+                      <div>T → FT'</div>
+                      <div>T' → *FT' | ε</div>
+                      <div>F → (E) | id</div>
+                      <div>id → 0-9 | a-z | A-Z</div>
+                    </div>
+                  </div><br/>
 
           <div className="mb-6">
             <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -243,18 +251,7 @@ export default function ParserAnalyzerUI() {
                     {renderParseTree(result.parseTree)}
                   </div>
                   
-                  {/* Grammar Reference */}
-                  <div className="mt-4 p-4 bg-indigo-50 rounded-lg border border-indigo-200">
-                    <h4 className="font-semibold text-indigo-900 mb-2 text-sm">Grammar Productions Used:</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs font-mono text-indigo-800">
-                      <div>E → TE'</div>
-                      <div>E' → +TE' | ε</div>
-                      <div>T → FT'</div>
-                      <div>T' → *FT' | ε</div>
-                      <div>F → (E) | id</div>
-                      <div>id → 0-9 | a-z | A-Z</div>
-                    </div>
-                  </div>
+                  
                 </div>
               )}
             </div>
