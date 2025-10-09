@@ -11,42 +11,26 @@
 
 #### 1. Clone the repository
 
-```bash
+```sh
 git clone https://github.com/ChethakaJayasingha/error_visualizer.git
+```
+
+```sh
 cd error_visualizer
-```
-
-#### 2. Setup Server
-
-```bash
-cd server
-npm install
-```
-
-#### 3. Setup Client
-
-```bash
-cd ../client
-npm install
 ```
 
 ### Running the Application
 
-#### Start the Backend Server
+#### Install Dependancies
 
-```bash
-# In server directory
-cd server
-node index.js
+```sh
+npm i
 ```
-
-- Server will run on: http://localhost:3001
 
 #### Start the Frontend Server
 
-```bash
-# In client directory (new terminal)
-cd client
+```sh
+# Inside directory (new terminal)
 npm run dev
 ```
 

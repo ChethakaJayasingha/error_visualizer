@@ -118,8 +118,4 @@ class Lexer {
   }
 }
 
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = { Lexer, TokenType, Token };
-}
-
 export { Lexer, TokenType, Token };
