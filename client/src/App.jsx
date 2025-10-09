@@ -263,7 +263,7 @@ export default function ParserAnalyzerUI() {
           <div className="mt-8 p-4 bg-blue-50 rounded-lg">
             <h4 className="font-semibold text-gray-800 mb-2">Test Examples:</h4>
             <div className="flex flex-wrap gap-2">
-              {['3+4*5', '(a+b)*c', 'x+y+z', '1*(2+3)', 'a+b*c+d', '((x))'].map((example) => (
+              {['3+4*5', '7-9/3', '(a+b)*c', 'x+y+z', '1/(2+3)', 'a+b*c-d', '((x))'].map((example) => (
                 <button
                   key={example}
                   onClick={() => setInput(example)}
@@ -275,7 +275,7 @@ export default function ParserAnalyzerUI() {
             </div>
             <h4 className="font-semibold text-gray-800 mt-3 mb-2">Error Examples:</h4>
             <div className="flex flex-wrap gap-2">
-              {['3+', '*5', '3+*4', '(a+b', 'a++b', '3&4'].map((example) => (
+              {['3+', '*5', '3+/4', '(a-b', 'a++b', '3&4'].map((example) => (
                 <button
                   key={example}
                   onClick={() => setInput(example)}
