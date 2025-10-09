@@ -1,14 +1,6 @@
-import express from "express";
-import cors from "cors";
 import { Lexer } from "./lexer.js";
 import { Parser } from "./parser.js";
 import { SymbolTable } from "./symbolTable.js";
-
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-app.use(cors());
-app.use(express.json());
 
 // Helper function to convert parse tree to simple object
 function serializeParseTree(node) {
@@ -21,14 +13,12 @@ function serializeParseTree(node) {
   };
 }
 
-app.post("/analyze", (req, res) => {
+export const analizeHelper = (input) => {
   try {
-    const { input } = req.body;
-
     if (!input || input.trim() === "") {
-      return res.status(400).json({
+      return {
         error: "Input string is required",
-      });
+      };
     }
 
     // Step 1: Lexical Analysis
@@ -38,14 +28,14 @@ app.post("/analyze", (req, res) => {
     try {
       tokens = lexer.tokenize();
     } catch (lexError) {
-      return res.json({
+      return {
         success: false,
         errorType: "LEXICAL_ERROR",
         message: lexError.message,
         tokens: [],
         symbolTable: [],
         parseTree: null,
-      });
+      };
     }
 
     // Step 2: Build Symbol Table
@@ -61,7 +51,7 @@ app.post("/analyze", (req, res) => {
     const parseResult = parser.parse();
 
     if (parseResult.success) {
-      return res.json({
+      return {
         success: true,
         errorType: null,
         message: "Input string accepted!",
@@ -73,9 +63,9 @@ app.post("/analyze", (req, res) => {
         symbolTable: symbolTable.getTable(),
         statistics: symbolTable.getStatistics(),
         parseTree: serializeParseTree(parseResult.parseTree),
-      });
+      };
     } else {
-      return res.json({
+      return {
         success: false,
         errorType: "SYNTAX_ERROR",
         message: parseResult.errors[0].message,
@@ -87,16 +77,12 @@ app.post("/analyze", (req, res) => {
         })),
         symbolTable: symbolTable.getTable(),
         parseTree: null,
-      });
+      };
     }
   } catch (error) {
-    res.status(500).json({
+    return {
       error: "Internal server error",
       message: error.message,
-    });
+    };
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+};

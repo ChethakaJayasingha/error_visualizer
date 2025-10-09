@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import { TokenType } from "./lexer.js";
 
 class ParseTreeNode {
